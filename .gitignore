@@ -1,0 +1,19 @@
+# 运行结果（含用户数据，不上传）
+bilibili_results/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# 进度文件
+_progress.json
