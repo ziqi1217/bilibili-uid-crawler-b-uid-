@@ -99,12 +99,41 @@ bilibili_results/
 └── B站账号清单.xlsx        # Excel 导出（需手动运行导出工具）
 ```
 
+## 常见问题
+
+### 双击 .py 文件闪退/没反应？
+
+大概率是依赖没装好。打开 cmd 手动运行看报错：
+
+```bash
+cd /d 你的脚本目录
+pip install requests openpyxl
+python crawler.py
+```
+
+> ⚠️ 确保系统 Python 安装了 `requests` 和 `openpyxl`，否则脚本启动瞬间就会报错闪退。
+
+### Cookie 填了还是提示"无Cookie"？
+
+粘贴的应该是 **SESSDATA 的值**（如 `509263fb%2C1797690285%2Cd8e22%2A62`），不要带 `SESSDATA=` 前缀。
+
+### 速度很慢（< 1 uid/s）？
+
+说明没填 Cookie 或 Cookie 已过期，B站对未登录请求做了严格限速。重新获取 SESSDATA 再试。
+
+### 导出 Excel 没效果？
+
+必须在**爬虫数据所在的目录**运行 `export_excel.py`，即 `bilibili_results` 文件夹要和脚本在同一目录下。
+
 ## 注意事项
 
 - 无 Cookie 时速度约 0.3~1 uid/s，有 Cookie 后可达 3~10 uid/s
 - 线程数建议 8~15，超过 20 可能触发 B站风控（code=-352/-799）
 - 限速后程序会自动等待重试，无需手动干预
 - 扫描超过 50 万 UID 时会弹出确认提示
+- Ctrl+C 中断会自动保存已找到的结果，不会丢失数据
+- 网络出错自动重试 3 次，不会崩溃
+- 每找到 10 个目标账号自动保存一次
 - 本工具仅供学习研究，请勿用于商业用途或大规模滥用
 
 ## License
