@@ -17,3 +17,11 @@ Thumbs.db
 
 # 进度文件
 _progress.json
+
+# 打包产物（exe通过GitHub Releases发布，不放仓库）
+dist/
+build/
+*.spec
+
+# 日志文件
+debug_log.txt
